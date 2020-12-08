@@ -15,17 +15,17 @@ function App() {
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
 
-  //Run once when the app refreshes
+  // useEffect - Run once when the app refreshes
   useEffect(() => {
     getLocalTodos();
   },[])
-   // useEffect 
+   // useEffect - Run accordingly to todos and status type
    useEffect(() => {
      filteredHandler();
      saveLocalTodos();
    },[todos, status])
 
-   //function 
+   //functions 
   const filteredHandler = () => {
     switch(status){
       case 'completed' : 
@@ -39,6 +39,7 @@ function App() {
         break;
     }
   };
+  // Save to local storage to avoid data-lost when the page refresh
   const saveLocalTodos = () => {
 localStorage.setItem('todos', JSON.stringify(todos));
   };
@@ -57,6 +58,7 @@ localStorage.setItem('todos', JSON.stringify(todos));
          My Todo List
         </h1>
       </header>
+      //Passing down props to COMPONENTS
         <Form setInputText={setInputText} inputText={inputText} todos={todos} setTodos={setTodos} setStatus={setStatus} filteredTodos={filteredTodos} />
         <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} />
     </div>
