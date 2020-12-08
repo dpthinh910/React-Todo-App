@@ -51,14 +51,14 @@ localStorage.setItem('todos', JSON.stringify(todos));
       setTodos(todoLocal);
     }
   };
+  //Passing down props to COMPONENTS
   return (
     <div className="App">
       <header>
         <h1>
          My Todo List
         </h1>
-      </header>
-      //Passing down props to COMPONENTS
+      </header>    
         <Form setInputText={setInputText} inputText={inputText} todos={todos} setTodos={setTodos} setStatus={setStatus} filteredTodos={filteredTodos} />
         <TodoList todos={todos} setTodos={setTodos} filteredTodos={filteredTodos} />
     </div>
